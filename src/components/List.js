@@ -17,17 +17,17 @@ class List extends React.Component {
     
     return(
     <div>
-    <ul>
+    <ul className="list-group">
     {books.map(function(book){
      return(
-        <li
+        <li className="list-group-item"
          key={book.id}
          >
-         title: {book.name}
-          <br />
-         rate: {book.rate}
-           <br />
-         review: {book.text}
+         <h3>title: {book.name}</h3>
+       
+         <p>rate: {book.rate} </p>
+   
+         <p> review: {book.text}</p>
         </li>
         )
     }
