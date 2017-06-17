@@ -14,19 +14,6 @@ import LoginForm from './LoginForm';
 
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {isLoginOpen: false}
-    }
-    
-    openLogin(){
-        this.setState({isLoginOpen: true})
-    }
-    
-    closeLogin(){
-        this.setState({isLoginOpen: false})
-    }
-    
      
   render() {
     return (
@@ -43,21 +30,6 @@ class App extends Component {
       </div>
     </Router>
         
-        
-      /*<div>
-      <div className="container">
-        <button onClick={() =>this.openLogin()}>Open Login</button>
-        <Login isOpen={this.state.isLoginOpen} onClose={()=>this.closeModal()}>
-            <LoginForm />
-            
-            <p><button onClick={()=>this.closeLogin()}>Logout</button></p>
-        </Login>
-        </div>
-    
-       <List  />
-      </div>
-      
-      */
     );
   }
 } 

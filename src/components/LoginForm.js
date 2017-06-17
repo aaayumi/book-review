@@ -31,8 +31,7 @@ class LoginForm extends Component {
          alert("error");
     }
     }
-    
-    
+
     openForm(){
         this.setState({isFormOpen: true})
     }

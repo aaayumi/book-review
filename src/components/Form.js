@@ -34,45 +34,43 @@ class Form extends React.Component{
         bookData.push(newBook);
         this.setState({books: bookData });
         localStorage.bookReviews = JSON.stringify(bookData);
-        
+        this.clear();
          this.setState({ showModal: false });
         }
-    
-        button() {
-          return ({
-              'blue' : this.state.clicked,
-              'yellow' : !this.state.clicked
-          });  
-        }
-    
        
+    clear() {
+        this.setState({
+            books: JSON.parse(localStorage.getItem('bookReviews'))
+        })
+    }
     render() {
         return(
         <div>
         <form className="form">
+        <h1> Book Review Form </h1>
         <div> 
-        <label className="bookName" for="title">Add Book Title </label>
-        <input id="bookName" className="formInput" type="text" value={this.state.name} onChange={this.handleChange}/>
+        <label className="bookName" for="title">Add Book Title : </label>
+        <input id="bookName" className="formInput" type="text" placeholder="Add book title here" value={this.state.name} onChange={this.handleChange}/>
         </div> 
         <div>    
-        <label className="bookRate" for="rate">Add Review Rate </label>
-        <input id="bookRate" className="formInput" type="text" value={this.state.rate} onChange={this.handleChange}/>
+        <label className="bookRate" for="rate">Add Review Rate : </label>
+        <input id="bookRate" className="formInput" type="text" placeholder="Add rate between 1(bad) and 5 (good)" value={this.state.rate} onChange={this.handleChange}/>
         </div>    
         <div>    
-        <label className="bookText" for="text">Add Review Text </label>
-        <input id="bookText" className="formInput" type="text" value={this.state.text} onChange={this.handleChange} />
+        <label className="bookText" for="text">Add Review Text : </label>
+        <input id="bookText" className="formInput" type="text" placeholder="Write your review here" value={this.state.text} onChange={this.handleChange} />
         </div> 
-        
         <button 
-           type="submit"
+            className="formButton"
+            type="submit"
             disabled={!this.state.books}
             onClick={(e) => {this.submit(); {this.setState({clicked: !this.state.clicked})}}}
             >
-            send
+            Submit Review
         </button>
         </form>
-        
-        <Link to="/">
+            
+        <Link to="/" className="logout">
              Logout
           </Link>
             

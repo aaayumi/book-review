@@ -36,7 +36,8 @@ class Login extends Component {
         }
         
         if(login.name =="user"){
-        this.setState({ showModal: true });
+        this.setState({ showModal: true,
+                        form: false});
         this.close();
         } else {
          alert("error");
@@ -49,22 +50,24 @@ class Login extends Component {
     
     render(){
     return (
-    <div>
-    <div>
-    <form className="loginForm" onSubmit={this.handleSubmit} onHide={this.close}>
+    <div className="loginForm">
+    
+    <form className="login loginForm" onSubmit={this.handleSubmit} onHide={this.close}>
         {this.state.showModal ? <Form /> : null }
-          <label className="loginName" for="name">
-          <input id="loginName" className="name" type="text" value={this.state.name} />
-          </label>
-         <button 
-            className="button"
+        
+        <h1>Login</h1>  
+        <label className="login loginName" for="name">
+          Username: 
+        <input id="loginName" className="name" type="text" value={this.state.name} />
+        <button 
+            className="submitButton"
             type="submit"
            >
             Submit
         </button>
+        </label>
+         
         </form>
-      </div>
-      
     </div>
     );
     } 
