@@ -1,29 +1,18 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
-import List from './List';
+import React ,{ Component } from 'react';
 import Form from './Form';
-import App from './App';
+import { Link } from 'react-router-dom'
 
-/*var Modal = require('react-bootstrap-modal');
-var Button = require('react-bootstrap-modal');
-*/
-class Login extends Component {
-     constructor(props){
+class LoginForm extends Component {
+    constructor(props){
         super(props);
         this.state={
             login: '',
-            showModal: false,
-            form: true
+            isFormOpen: false
         };
-         
-      
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
     
     handleSubmit = (e) => {
         
@@ -35,24 +24,27 @@ class Login extends Component {
             name: loginName
         }
         
+         console.log(login.name)
         if(login.name =="user"){
-        this.setState({ showModal: true });
-        this.close();
+         this.setState({isFormOpen: true})
         } else {
          alert("error");
     }
     }
     
-    close() {
-            this.setState({ form: false });
-        }
     
-    render(){
-    return (
-    <div>
-    <div>
-    <form className="loginForm" onSubmit={this.handleSubmit} onHide={this.close}>
-        {this.state.showModal ? <Form /> : null }
+    openForm(){
+        this.setState({isFormOpen: true})
+    }
+    
+    closeForm(){
+        this.setState({isFormOpen: false})
+    }
+
+    render() {
+        return (
+        <div>
+        <form className="loginForm" onSubmit={this.handleSubmit}>
           <label className="loginName" for="name">
           <input id="loginName" className="name" type="text" value={this.state.name} />
           </label>
@@ -63,11 +55,12 @@ class Login extends Component {
             Submit
         </button>
         </form>
-      </div>
-      
-    </div>
-    );
-    } 
-};
+            
+        </div>
+        )
+    }
+}
 
-export default Login;
+
+
+export default LoginForm;

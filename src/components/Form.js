@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+import Login from './Login';
+import List from './List';
 
 if(localStorage.getItem('bookReviews')===null){
     localStorage.setItem('bookReviews','[]');
@@ -10,27 +13,10 @@ class Form extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            books: []
-        };
-        
-    
-      //  this.handleSubmit = this.handleSubmit.bind(this);
+            books: [],
+            showModal: true
+        };    
     }
-    
-    /*handleChange(event) {
-        var value = event.target.value;
-        
-        this.setState(function(){
-            return{
-                 name: value,
-                 rate: value,
-                 text: value
-            }
-        });
-    }
-    */
-    // handleSubmit(event) {
-     
         
     submit(){
         
@@ -44,25 +30,22 @@ class Form extends React.Component{
             rate: bookRate,
             text: bookText
         }
-        
+
         bookData.push(newBook);
         this.setState({books: bookData });
         localStorage.bookReviews = JSON.stringify(bookData);
         
-      
-        
+         this.setState({ showModal: false });
         }
-       
-    /*bookData.push(newBook);
-        console.log(bookData);
     
-        this.setState({books: bookData });
-        
-        localStorage.bookReviews = JSON.stringify(bookData);
-        
-       // console.log(localStorage.bookReviews);
-    }
-    */
+        button() {
+          return ({
+              'blue' : this.state.clicked,
+              'yellow' : !this.state.clicked
+          });  
+        }
+    
+       
     render() {
         return(
         <div>
@@ -81,13 +64,18 @@ class Form extends React.Component{
         </div> 
         
         <button 
-            onClick={() => this.submit()}
-            className="formButton"
-            type="submit"
-            disabled={!this.state.books}>
-            Submit
+           type="submit"
+            disabled={!this.state.books}
+            onClick={(e) => {this.submit(); {this.setState({clicked: !this.state.clicked})}}}
+            >
+            send
         </button>
         </form>
+        
+        <Link to="/">
+             Logout
+          </Link>
+            
         </div>
         )
     }

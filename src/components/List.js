@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react';
 import Form from './Form';
 import App from './App';
+import { Link } from 'react-router-dom'
 
 if(!localStorage.hasOwnProperty('bookReviews')){
     localStorage.setItem('bookReviews')
@@ -46,6 +47,8 @@ class List extends React.Component {
        
     return(
     <div>
+    <Link className='button' to='/login'>Login</Link>
+        
     <ul className="list-group">
     {books.map(function(book){
      return(
