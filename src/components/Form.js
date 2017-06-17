@@ -2,28 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 if(localStorage.getItem('bookReviews')===null){
-    var initialBooks = 
-                 [{id:1,
-                  name:'The Ocean',
-                  rate: '4',
-                  text: 'blablablablablablablablablabla'},
-                 {id:2,
-                  name:'LOVE',
-                  rate: '2',
-                  text: 'blablablablablablablabla'},
-                 {id:3,
-                  name:'I am',
-                  rate: '5',
-                  text: 'blablablablablablablabla'}];
-    localStorage.setItem('book-reviews',initialBooks);
-   
-}
+    localStorage.setItem('bookReviews','[]');
+};
+
 
 class Form extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            books:[]
+            books: []
         };
         
     
@@ -62,32 +49,46 @@ class Form extends React.Component{
         this.setState({books: bookData });
         localStorage.bookReviews = JSON.stringify(bookData);
         
-        console.log(bookData[0]);
-    }
+      
+        
+        }
+       
+    /*bookData.push(newBook);
+        console.log(bookData);
     
+        this.setState({books: bookData });
+        
+        localStorage.bookReviews = JSON.stringify(bookData);
+        
+       // console.log(localStorage.bookReviews);
+    }
+    */
     render() {
         return(
+        <div>
         <form className="form">
-        <label className="bookName" for="title">Add Book Title
-        <input id="bookName" type="text" value={this.state.name} onChange={this.handleChange}/>
-        </label>
-            
-        <label className="bookRate" for="rate">Add Review Rate
-        <input id="bookRate" type="text" value={this.state.rate} onChange={this.handleChange}/>
-        </label>
-            
-        <label className="bookText" for="text">Add Review Text
-        <input id="bookText" type="text" value={this.state.text} onChange={this.handleChange} />
-        </label>
+        <div> 
+        <label className="bookName" for="title">Add Book Title </label>
+        <input id="bookName" className="formInput" type="text" value={this.state.name} onChange={this.handleChange}/>
+        </div> 
+        <div>    
+        <label className="bookRate" for="rate">Add Review Rate </label>
+        <input id="bookRate" className="formInput" type="text" value={this.state.rate} onChange={this.handleChange}/>
+        </div>    
+        <div>    
+        <label className="bookText" for="text">Add Review Text </label>
+        <input id="bookText" className="formInput" type="text" value={this.state.text} onChange={this.handleChange} />
+        </div> 
         
         <button 
             onClick={() => this.submit()}
-            className="button"
+            className="formButton"
             type="submit"
             disabled={!this.state.books}>
             Submit
         </button>
         </form>
+        </div>
         )
     }
 }
