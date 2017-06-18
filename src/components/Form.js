@@ -8,7 +8,6 @@ if(localStorage.getItem('bookReviews')===null){
     localStorage.setItem('bookReviews','[]');
 };
 
-
 class Form extends React.Component{
     constructor(props){
         super(props);
@@ -19,7 +18,6 @@ class Form extends React.Component{
     }
         
     submit(){
-        
         const bookName = document.getElementById("bookName").value;
         const bookRate = document.getElementById("bookRate").value;
         const bookText = document.getElementById("bookText").value;
@@ -35,7 +33,7 @@ class Form extends React.Component{
         this.setState({books: bookData });
         localStorage.bookReviews = JSON.stringify(bookData);
         this.clear();
-         this.setState({ showModal: false });
+        this.setState({ showModal: false });
         }
        
     clear() {
@@ -64,7 +62,7 @@ class Form extends React.Component{
             className="formButton"
             type="submit"
             disabled={!this.state.books}
-            onClick={(e) => {this.submit(); {this.setState({clicked: !this.state.clicked})}}}
+            onClick={(e) => {this.submit()}}
             >
             Submit Review
         </button>

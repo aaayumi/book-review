@@ -18,14 +18,24 @@ class Login extends Component {
         this.state={
             login: '',
             showModal: false,
-            form: true
+            form: true,
+            isLoggedIn: false
+            
+            
         };
-         
-      
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     }
     
-    handleSubmit = (e) => {
+    handleLoginClick (){
+        this.setState({ isLoggedIn: true});
+    }
+      handleLogoutClick (){
+        this.setState({ isLoggedIn: false});
+    }
+    
+    /*handleSubmit = (e) => {
         
         e.preventDefault()
           
@@ -35,42 +45,78 @@ class Login extends Component {
             name: loginName
         }
         
-        if(login.name =="user"){
+       ≈
         this.setState({ showModal: true,
                         form: false});
         this.close();
         } else {
-         alert("error");
+         alert("Error! ");
     }
     }
     
     close() {
             this.setState({ form: false });
         }
+    */
+    handleLoginClick() {
+        const loginName = document.getElementById("loginName").value;
+        
+        const login = {
+            name: loginName
+        }
+        
+         if(login.name =="user"){
+        this.setState({ isLoggedIn: true,});
+    } else {
+        alert("Error");
+    }
+    } 
     
     render(){
+       
+    const isLoggedIn = this.state.isLoggedIn;
+    
+    let button = null;
+    if (!isLoggedIn) {
+      button = <LoginButton onClick={this.handleLoginClick} />;
+    }
+        
     return (
     <div className="loginForm">
-    
-    <form className="login loginForm" onSubmit={this.handleSubmit} onHide={this.close}>
-        {this.state.showModal ? <Form /> : null }
-        
+    <form className="login loginForm" >
+     
         <h1>Login</h1>  
         <label className="login loginName" for="name">
           Username: 
         <input id="loginName" className="name" type="text" value={this.state.name} />
-        <button 
-            className="submitButton"
-            type="submit"
-           >
-            Submit
-        </button>
+       
+        <LoggedIn isLoggedIn={isLoggedIn} />
+        {button} 
         </label>
          
         </form>
+
+        
     </div>
     );
     } 
 };
+
+function LoggedIn(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <Form />;
+  }
+  return null;
+}
+
+function LoginButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Login
+    </button>
+  );
+}
+
 
 export default Login;
