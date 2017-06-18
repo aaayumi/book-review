@@ -35,12 +35,7 @@ class Form extends React.Component{
         this.clear();
         this.setState({ showModal: false });
         }
-       
-    clear() {
-        this.setState({
-            books: JSON.parse(localStorage.getItem('bookReviews'))
-        })
-    }
+    
     render() {
         return(
         <div>
@@ -70,7 +65,7 @@ class Form extends React.Component{
             
         <Link to="/" className="logout">
              Logout
-          </Link>
+        </Link>
             
         </div>
         )
