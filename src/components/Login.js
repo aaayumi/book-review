@@ -65,11 +65,11 @@ class Login extends Component {
             name: loginName
         }
         
-         if(login.name =="user"){
+        if(login.name =="user"){
         this.setState({ isLoggedIn: true,});
-    } else {
+        } else {
         alert("Error");
-    }
+        }
     } 
     
     render(){
@@ -77,6 +77,7 @@ class Login extends Component {
     const isLoggedIn = this.state.isLoggedIn;
     
     let button = null;
+        
     if (!isLoggedIn) {
       button = <LoginButton onClick={this.handleLoginClick} />;
     }
@@ -85,18 +86,20 @@ class Login extends Component {
     <div className="loginForm">
     <form className="login loginForm" >
      
-        <h1>Login</h1>  
+        <h1>Login</h1>
+        
         <label className="login loginName" for="name">
-          Username: 
+        Username: 
+        
         <input id="loginName" className="name" type="text" value={this.state.name} />
        
         <LoggedIn isLoggedIn={isLoggedIn} />
         {button} 
         </label>
          
-        </form>
+    </form>
 
-        
+    <p>text</p>   
     </div>
     );
     } 

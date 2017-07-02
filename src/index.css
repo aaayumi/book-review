@@ -62,6 +62,10 @@ h1 {
 
 
 /* from */
+form {
+    margin-bottom: 50px;
+}
+
 input {
     width: 70%;
     padding: 10px 10px;
@@ -94,6 +98,34 @@ input {
     text-decoration: none;
     box-shadow: 5px 5px 3px #888888;
     color: black; 
+}
+
+.submit {
+    margin-top: 150px;
+    font-size: 20px;
+    border: 1px solid black;
+    background:#F7F969;
+    padding: 10px 5px 10px 5px;
+    width: 10%;
+    text-decoration: none;
+    box-shadow: 5px 5px 3px #888888;
+    color: black; 
+    font-size: 20px;
+    font-family:"Lato",sans-serif;
+}
+
+.submit:hover {
+    margin-top: 150px;
+    font-size: 20px;
+    border: 1px solid black;
+    background:#F8F9BB;
+    padding: 10px 5px 10px 5px;
+    width: 10%;
+    text-decoration: none;
+    box-shadow: 5px 5px 3px #888888;
+    color: black; 
+    font-size: 20px;
+    font-family:"Lato",sans-serif;
 }
 
 .logout {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-import Login from './Login';
-import List from './List';
 
 if(localStorage.getItem('bookReviews')===null){
     localStorage.setItem('bookReviews','[]');
@@ -12,7 +10,7 @@ class Form extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            books: [],
+            books: JSON.parse(localStorage.getItem('bookReviews')),
             showModal: true
         };    
     }
@@ -31,7 +29,7 @@ class Form extends React.Component{
 
         bookData.push(newBook);
         this.setState({books: bookData });
-        localStorage.bookReviews = JSON.stringify(bookData);
+        localStorage.setItem('bookReviews', JSON.stringify(bookData));
         this.clear();
         this.setState({ showModal: false });
         }
@@ -53,14 +51,14 @@ class Form extends React.Component{
         <label className="bookText" for="text">Add Review Text : </label>
         <input id="bookText" className="formInput" type="text" placeholder="Write your review here" value={this.state.text} onChange={this.handleChange} />
         </div> 
-        <button 
-            className="formButton"
+            
+        <Link to="/" className="submit"
             type="submit"
             disabled={!this.state.books}
             onClick={(e) => {this.submit()}}
             >
-            Submit Review
-        </button>
+            Submit
+        </Link>
         </form>
             
         <Link to="/" className="logout">
